@@ -16,18 +16,21 @@
                 <div class="mb-3">
                     <label for="inputName" class="form-label">Name</label>
                     <input wire:model="name" type="text" class="form-control" id="inputName" aria-describedby="nameError">
-                    <div id="nameError" class="form-text text-danger">We'll never share your email with anyone else.</div>
+                    @error('name') <div id="nameError" class="form-text text-danger">{{$message}}</div> @enderror
+                        
+                    
                 </div>
                 <div class="mb-3">
                     <div class="form-floating">
                         <textarea wire:model="description" class="form-control" placeholder="Description blablab" id="floatingTextareaDescription" style="height: 100px"></textarea>
                         <label for="floatingTextareaDescription">Description</label>
+                        @error('description') <div id="nameError" class="form-text text-danger">{{$message}}</div> @enderror
                     </div>
                 </div>
                 <div class="mb-3">
                     <label for="inputDeadLine" class="form-label">Deadline</label>
                     <input wire:model="deadline" type="datetime-local" class="form-control" id="inputDeadLine" aria-describedby="inputDeadLineError">
-                    <div id="inputDeadLineError" class="form-text text-danger">We'll never share your email with anyone else.</div>
+                    @error('deadline') <div id="nameError" class="form-text text-danger">{{$message}}</div> @enderror
                 </div>
                 <div class="mb-3">
                     <label for="selectStatus" class="form-label">Status</label>
@@ -37,6 +40,7 @@
                             <option value=2>Completed</option>
                             <option value=3>Overdue</option>
                     </select>
+                    @error('taskStatusId') <div id="nameError" class="form-text text-danger">{{$message}}</div> @enderror
                 </div>
             </div>
             <div class="modal-footer">

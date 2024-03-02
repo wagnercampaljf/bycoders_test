@@ -19,6 +19,17 @@ class ModalDataTo extends Component
 
     public $action;
 
+    protected $rules = [
+        'name' => 'required|max:255',
+        'description' => 'max:5000',
+        'deadline' => 'required',
+        'taskStatusId' => 'required'
+    ];
+
+    protected $messages = [
+        'taskStatusId.required' => 'The status field is required.'
+    ];
+
     public function mount(){
         //$this->taskStatuses = TaskStatus::all();         
     }
@@ -30,6 +41,8 @@ class ModalDataTo extends Component
 
     #[On('eventAction')] 
     public function eventAction($action, $taskId = ''){
+        $this->reset();
+
         $this->action = $action;
 
         if($taskId){
@@ -38,6 +51,8 @@ class ModalDataTo extends Component
     }
 
     public function submit(){
+        $this->validate();
+
 ;       $this->createOrUpdate();
     }
 
@@ -55,11 +70,16 @@ class ModalDataTo extends Component
 
         $this->dispatch('refresh')->to('task.index');
         $this->dispatch('modalClose', '#modal-data-to');
-        $this->reset();
     }
 
     private function edit($taskId){
+        $task = Task::find($taskId);
 
+        $this->taskId = $task->id;
+        $this->name = $task->name;
+        $this->description = $task->description;
+        $this->deadline = $task->deadline;
+        $this->taskStatusId = $task->task_status_id;
     }
 
 }
