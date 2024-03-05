@@ -49,7 +49,9 @@
                     <i class="fas fa-chart-area me-1"></i>
                     Area Chart Example
                 </div>
-                <div class="card-body"><canvas id="myAreaChart" width="100%" height="40"></canvas></div>
+                <div class="card-body">
+                    <canvas id="myChart"></canvas>
+                </div>
             </div>
         </div>
         <div class="col-xl-6">
@@ -97,6 +99,25 @@
     </div>
 </div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
-<script src="backend/assets/demo/chart-area-demo.js"></script>
-<script src="backend/assets/demo/chart-bar-demo.js"></script>
+<script>
+    const ctx = document.getElementById('myChart');
+  
+    new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+        datasets: [{
+          label: '# of Votes',
+          data: [12, 19, 3, 5, 2, 3],
+          borderWidth: 1
+        }]
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+    });
+  </script>

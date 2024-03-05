@@ -3,7 +3,11 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Livewire\Task\{
-    Index as TaskIndex
+    Index as TaskIndex,
+};
+
+use App\Livewire\Dashboard\{
+    Index as DashboardIndex,
 };
 
 /*
@@ -24,6 +28,10 @@ Route::get('/', function () {
 // Route::group(['prefix' => 'task', 'as' => 'task.'], function(){
 //     Route::get('/', TaskIndex::class)->name('index');
 // });
+
+Route::group(['prefix' => 'dashboard', 'as' => 'dashboard.'], function(){
+        Route::get('/dashboard', DashboardIndex::class)->name('dashboard.1');
+    });
 
 Route::middleware([
     'auth:sanctum',

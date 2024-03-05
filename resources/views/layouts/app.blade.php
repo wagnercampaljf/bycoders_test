@@ -23,12 +23,9 @@
         <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
         <!-- Task -->
 
-        <!-- Task -->
-        <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
-        <script src="backend/js/scripts.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
-        <script src="backend/js/datatables-simple-demo.js"></script>
-        <!-- Task -->
+        <!-- Chart -->
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <!-- Chart -->
 
 
 
