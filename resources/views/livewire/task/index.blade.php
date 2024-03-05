@@ -41,19 +41,19 @@
     </div>
    
     <div class="card col-12">
-        <div class="card-header">
+        <div class="card-header mx-3">
             <div class="container">
                 <div class="row align-items-center justify-content-between">
                     <div class="col">
                         <h4>Task List</h4>
                     </div>
                     <div class="col-auto">
-                        <button wire:click="dispatch('eventAction', ['store'])" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal-data-to">New Task</button>
+                        <button wire:click="dispatch('eventAction', ['store'])" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal-data-to"><i class="fas fa-plus"></i></button>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="card-body">
+        <div class="card-body mx-3">
             @if ($tasks->isEmpty())
                 <div class="alert alert-secundary text-center mb-0" role="alert">
                     No tasks registered.
@@ -97,7 +97,7 @@
               {{$tasks->links()}}
             @endif
         </div>
-        <div class="card-footer">
+        <div class="card-footer mx-3">
             <div class="container">
                 <div class="row">
                     <div class="col">

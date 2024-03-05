@@ -21,6 +21,21 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::group(['prefix' => 'task', 'as' => 'task.'], function(){
-    Route::get('/', TaskIndex::class)->name('index');
+// Route::group(['prefix' => 'task', 'as' => 'task.'], function(){
+//     Route::get('/', TaskIndex::class)->name('index');
+// });
+
+Route::middleware([
+    'auth:sanctum',
+    config('jetstream.auth_session'),
+    'verified',
+])->group(function () {
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->name('dashboard');
+
+    Route::get('/task', function () {
+        return view('task');
+    })->name('task');
+
 });
