@@ -41,7 +41,7 @@
     </div>
    
     <div class="card col-12">
-        <div class="card-header mx-3">
+        <div class="card-header">
             <div class="container">
                 <div class="row align-items-center justify-content-between">
                     <div class="col">
@@ -53,7 +53,7 @@
                 </div>
             </div>
         </div>
-        <div class="card-body mx-3">
+        <div class="card-body">
             @if ($tasks->isEmpty())
                 <div class="alert alert-secundary text-center mb-0" role="alert">
                     No tasks registered.
@@ -62,23 +62,23 @@
             <table class="table table-striped table-hover" style="table-layout: fixed">
                 <thead>
                   <tr class="table-secundary">
-                    <th scope="col" class="d-none d-md-table-cell">ID</th>
-                    <th scope="col">Name</th>
-                    <th scope="col" class="d-none d-md-table-cell">Description</th>
-                    <th scope="col" class="d-none d-md-table-cell">Deadline</th>
-                    <th scope="col">Status</th>
-                    <th scope="col" class="text-center"></th>
+                    <th scope="col" class="col-1 d-none d-md-table-cell">ID</th>
+                    <th scope="col" class="col-2">Name</th>
+                    <th scope="col" class="col-4 d-none d-md-table-cell">Description</th>
+                    <th scope="col" class="col-2 d-none d-md-table-cell">Deadline</th>
+                    <th scope="col" class="col-2 ">Status</th>
+                    <th scope="col" class="col-1 text-center"></th>
                   </tr>
                 </thead>
                 <tbody>
                     @foreach ($tasks as $task)
                         <tr>
-                            <th scope="row" class="d-none d-md-table-cell">{{$task->id}}</th>
-                            <td>{{$task->name}}</td>
-                            <td class="d-none d-md-table-cell">{{$task->description}}</td>
-                            <td class="d-none d-md-table-cell">{{$task->deadline}}</td>
-                            <td>{{$task->taskStatus->name}}</td>
-                            <td class="text-center">
+                            <th scope="row" class="col-1 d-none d-md-table-cell">{{$task->id}}</th>
+                            <td class="col-2">{{$task->name}}</td>
+                            <td class="col-4 d-none d-md-table-cell">{{$task->description}}</td>
+                            <td class="col-2 d-none d-md-table-cell">{{$task->deadline}}</td>
+                            <td class="col-2">{{$task->taskStatus->name}}</td>
+                            <td class="col-1 text-center">
                                 <div class="dropdown">
                                     <button class="btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                                         <i class="fas fa-ellipsis-v"></i>
