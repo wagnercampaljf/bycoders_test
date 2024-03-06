@@ -56,6 +56,14 @@ This repository contains a Laravel project configured for use with Laravel Sail.
 
 After completing installation and configuration, you can start using your Laravel application.
 
+1. Access the app:
+
+    ```bash
+    http://localhost/
+    ```
+
+
+
 ## Useful Laravel Sail Commands
 
 - Start Docker containers:
@@ -69,6 +77,13 @@ After completing installation and configuration, you can start using your Larave
     ```bash
     ./vendor/bin/sail down
     ```
+
+##Desciption
+
+- I used Laravel Sail (Docker) for the portability of the necessary technologies.
+- For the trial, a registry of TASKs was created, with a CRUD with filter pair and all CRUD functionalities.
+- A Dahboard was also created to view summarized Task data, as well as a filter for the Dashboard table and graphs.
+- For the login part, Jetstream was used, creating a complete system for login, profile, reset password, etc.
 
 ## Main Tools Used
 
