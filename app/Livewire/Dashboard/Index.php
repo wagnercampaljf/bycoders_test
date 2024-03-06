@@ -14,8 +14,8 @@ class Index extends Component
     protected $paginationTheme = 'bootstrap';
 
     public $taskStatusIdFilter;
-    public $initialDateFilter = '2024-03-01';
-    public $finalDateFilter = '2024-03-15';
+    public $initialDateFilter;
+    public $finalDateFilter;
 
     public $quantityPending = 5;
     public $quantityOverdue = 15;
@@ -107,6 +107,22 @@ class Index extends Component
         if (!empty($this->initialDateFilter) && !empty($this->finalDateFilter)){             
             $this->chartLineLabels = $this->generateDatesBetween($this->initialDateFilter, $this->finalDateFilter);
         }
+        elseif (empty($this->initialDateFilter) && !empty($this->finalDateFilter)){  
+            $firstDate = Task::orderBy('deadline', 'asc')->first()->deadline;
+            $this->chartLineLabels = $this->generateDatesBetween($firstDate, $this->finalDateFilter);
+        } 
+        elseif (!empty($this->initialDateFilter) && empty($this->finalDateFilter)){  
+            $lastDate = Task::orderBy('deadline', 'desc')->first()->deadline;
+            $lastDate = substr($lastDate, 0, 10).' 23:59:59';
+            $this->chartLineLabels = $this->generateDatesBetween($this->initialDateFilter, $lastDate);
+        }  
+        else{
+            $firstDate = Task::orderBy('deadline', 'asc')->first()->deadline; 
+            $lastDate = Task::orderBy('deadline', 'desc')->first()->deadline;
+            $lastDate = substr($lastDate, 0, 10).' 23:59:59';
+            $this->chartLineLabels = $this->generateDatesBetween($firstDate, $lastDate);
+        }         
+
     }
 
     public function getChartLineData(int $taskStatusId){
@@ -128,19 +144,17 @@ class Index extends Component
     {
         $dates = [];
         $currentDate = strtotime($startDate);
-    
         while ($currentDate <= strtotime($endDate)) {
             $dates[] = date('Y-m-d', $currentDate);
             $currentDate = strtotime('+1 day', $currentDate);
         }
-    
+
         return $dates;
     }
 
     #[On('updateChart')] 
     public function updateChartData()
     {
-        //dd($this->quantityPending, $this->quantityOverdue) ;
         $this->dispatch('chartDataUpdated', [
             'quantityPending' => $this->quantityPending,
             'quantityOverdue' => $this->quantityOverdue,
@@ -151,7 +165,6 @@ class Index extends Component
     #[On('updateChartLine')] 
     public function updateChartDataLine()
     {
-        //dd($this->quantityPending, $this->quantityOverdue) ;
         $this->dispatch('chartDataUpdatedLine', [
             'chartLineLabels' => $this->chartLineLabels,
             'chartLineDataPending' => $this->chartLineDataPending,
