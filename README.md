@@ -78,7 +78,7 @@ After completing installation and configuration, you can start using your Larave
     ./vendor/bin/sail down
     ```
 
-##Desciption
+## Desciption
 
 - I used Laravel Sail (Docker) for the portability of the necessary technologies.
 - For the trial, a registry of TASKs was created, with a CRUD with filter pair and all CRUD functionalities.
