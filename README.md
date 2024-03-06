@@ -1,80 +1,80 @@
 # Laravel Sail Setup
 
-Este repositório contém um projeto Laravel configurado para uso com Laravel Sail.
+This repository contains a Laravel project configured for use with Laravel Sail.
 
-## Pré-requisitos
+## Prerequisites
 
 - Composer
 - Docker
 - Docker Compose
 
-## Instalação e Configuração
+## Installation and Configuration
 
-1. Navegue até o diretório do projeto:
+1. Navigate to the project directory:
 
     ```bash
-    cd seu-projeto
+    cd your-project
     ```
 
-2. Instale as dependências do Composer:
+2. Install Composer dependencies:
 
     ```bash
     composer install
     ```
 
-3. Inicie os contêineres Docker usando Sail:
+3. Start Docker containers using Sail:
 
     ```bash
     ./vendor/bin/sail up
     ```
 
-4. Instale as dependências do npm (opcional, se você estiver usando JavaScript):
+4. Install npm dependencies (optional, if you're using JavaScript):
 
     ```bash
     ./vendor/bin/sail npm install
     ```
 
-5. Compile os assets usando npm (opcional, se você estiver usando JavaScript):
+5. Compile assets using npm (optional, if you're using JavaScript):
 
     ```bash
     ./vendor/bin/sail npm run build
     ```
 
-6. Execute as migrações do banco de dados:
+6. Run database migrations:
 
     ```bash
     ./vendor/bin/sail php artisan migrate
     ```
 
-7. Se necessário, execute os seeds do banco de dados:
+7. If needed, run database seeds:
 
     ```bash
     ./vendor/bin/sail php artisan db:seed
     ```
 
-## Uso
+## Usage
 
-Após concluir a instalação e configuração, você pode começar a usar seu aplicativo Laravel.
+After completing installation and configuration, you can start using your Laravel application.
 
-## Comandos Úteis do Laravel Sail
+## Useful Laravel Sail Commands
 
-- Iniciar os contêineres Docker:
+- Start Docker containers:
 
     ```bash
     ./vendor/bin/sail up
     ```
 
-- Parar os contêineres Docker:
+- Stop Docker containers:
 
     ```bash
     ./vendor/bin/sail down
     ```
 
-## Principais ferramenas utilizadas
+## Main Tools Used
 
 - Laravel Sail
 - Livewire
-- Boostatrap
+- Bootstrap
 - Jetstream
 - Pusher & Laravel Echo (Broadcasting)
 - MySQL
