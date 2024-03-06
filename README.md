@@ -70,7 +70,11 @@ Após concluir a instalação e configuração, você pode começar a usar seu a
     ./vendor/bin/sail down
     ```
 
-## Documentação
+## Principais ferramenas utilizadas
 
-Para obter mais informações sobre como usar o Laravel Sail, consulte a [documentação oficial do Laravel](https://laravel.com/docs/8.x/sail).
-
+- Laravel Sail
+- Livewire
+- Boostatrap
+- Jetstream
+- Pusher & Laravel Echo (Broadcasting)
+- MySQL
