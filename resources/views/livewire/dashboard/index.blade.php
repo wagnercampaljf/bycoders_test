@@ -79,7 +79,7 @@
                         Quantity per Status
                     </div>
                     <div class="card-body">
-                        <canvas id="myChart"></canvas>
+                        <canvas id="myChart" style="display: block; box-sizing: border-box; height: 269px; width: 538px;" width="538" height="269"></canvas>
                     </div>
                 </div>
             </div>
@@ -90,7 +90,7 @@
                         Quantity per day
                     </div>
                     <div class="card-body">
-                        <canvas id="myChart2"></canvas>
+                        <canvas id="myChart2" style="display: block; box-sizing: border-box; height: 269px; width: 538px;" width="538" height="269"></canvas>
                     </div>
                 </div>
             </div>
@@ -144,22 +144,22 @@
     const ctx = document.getElementById('myChart');
 
     const myChart1 = new Chart(ctx, {
-    type: 'bar',
-    data: {
-        labels: ['Pending', 'Overduo', 'Complted'],
-        datasets: [{
-        label: '',
-        data: [{!! $quantityPending !!}, {!! $quantityOverdue !!}, {!! $quantityCompleted !!} ],
-        borderWidth: 1
-        }]
-    },
-    options: {
-        // scales: {
-        // y: {
-        //     beginAtZero: true
-        // }
-        // }
-    }
+        type: 'bar',
+        data: {
+            labels: ['Pending', 'Overduo', 'Complted'],
+            datasets: [{
+                label: '',
+                data: [{!! $quantityPending !!}, {!! $quantityOverdue !!}, {!! $quantityCompleted !!} ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+            y: {
+                beginAtZero: true
+                }
+            },
+        }
     });
 
     
