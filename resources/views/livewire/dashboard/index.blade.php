@@ -138,12 +138,12 @@
     </div>
 </div>
 
-@script
 <script>
     
+    //Chart1
     const ctx = document.getElementById('myChart');
 
-    new Chart(ctx, {
+    const myChart1 = new Chart(ctx, {
     type: 'bar',
     data: {
         labels: ['Pending', 'Overduo', 'Complted'],
@@ -154,21 +154,22 @@
         }]
     },
     options: {
-        scales: {
-        y: {
-            beginAtZero: true
-        }
-        }
+        // scales: {
+        // y: {
+        //     beginAtZero: true
+        // }
+        // }
     }
     });
 
-    // //Chart2
+    
+    //Chart2
     const ctx2 = document.getElementById('myChart2');
 
-    new Chart(ctx2, {
-    type: 'line',
-    data: {
-        labels: {!! json_encode($chartLineLabels) !!},
+    const myChart2 = new Chart(ctx2, {
+        type: 'line',
+        data: {
+            labels: {!! json_encode($chartLineLabels) !!},
             datasets: [{
                 label: 'Pending',
                 data: {!! json_encode($chartLineDataPending) !!},
@@ -193,5 +194,25 @@
         }
     });
 
+    document.addEventListener('livewire:init', function () {
+            Livewire.on('chartDataUpdated', function (data) {
+                // Atualizar os dados do gráfico
+                myChart1.data.datasets[0].data = [data[0].quantityPending, data[0].quantityOverdue, data[0].quantityCompleted ];
+
+                myChart1.options.plugins.title.text = 'new title';
+
+                myChart1.update();
+            });
+
+            Livewire.on('chartDataUpdatedLine', function (data) {
+                // Atualizar os dados do gráfico
+                myChart2.data.labels = data[0].chartLineLabels;
+                myChart2.data.datasets[0].data = data[0].chartLineDataPending;
+                myChart2.data.datasets[1].data = data[0].chartLineDataOverduo;
+                myChart2.data.datasets[2].data = data[0].chartLineDataCompleted;
+
+                myChart2.update();
+            });
+        });
+
 </script>
-@endscript

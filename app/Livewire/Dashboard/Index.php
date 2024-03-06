@@ -13,13 +13,9 @@ class Index extends Component
 
     protected $paginationTheme = 'bootstrap';
 
-    public $task;
-
     public $taskStatusIdFilter;
     public $initialDateFilter = '2024-03-01';
     public $finalDateFilter = '2024-03-15';
-
-    public $data_chart2 = [10, 20, 30, 40, 50, 60, 70];
 
     public $quantityPending = 5;
     public $quantityOverdue = 15;
@@ -33,24 +29,11 @@ class Index extends Component
     #[On('refresh')] 
     public function render()
     {
-        $this->getQuantityPending();
-        $this->getQuantityOverdue();
-        $this->getQuantityCompleted();
-
-        $this->getChartLineLabels();
-        $this->chartLineDataPending = $this->getChartLineData(1);
-        $this->chartLineDataOverduo = $this->getChartLineData(2);
-        $this->chartLineDataCompleted = $this->getChartLineData(3);
+        $this->getChartData();
 
         return view('livewire.dashboard.index', [
             'tasks' => $this->filter(),
         ]);
-    }
-
-    #[On('chartCreate')] 
-    public function createChart()
-    {
-        $this->dispatch('createChart');
     }
 
     public function getQuantityPending(){
@@ -117,7 +100,7 @@ class Index extends Component
         $this->initialDateFilter = null;
         $this->finalDateFilter = null;
 
-        $this->dispatch('refresh')->to('dashboard.index');
+        $this->dispatch('refresh')->to('dashboard');
     }
 
     public function getChartLineLabels(){
@@ -154,5 +137,40 @@ class Index extends Component
         return $dates;
     }
 
+    #[On('updateChart')] 
+    public function updateChartData()
+    {
+        //dd($this->quantityPending, $this->quantityOverdue) ;
+        $this->dispatch('chartDataUpdated', [
+            'quantityPending' => $this->quantityPending,
+            'quantityOverdue' => $this->quantityOverdue,
+            'quantityCompleted' => $this->quantityCompleted,
+        ]);
+    }
 
+    #[On('updateChartLine')] 
+    public function updateChartDataLine()
+    {
+        //dd($this->quantityPending, $this->quantityOverdue) ;
+        $this->dispatch('chartDataUpdatedLine', [
+            'chartLineLabels' => $this->chartLineLabels,
+            'chartLineDataPending' => $this->chartLineDataPending,
+            'chartLineDataOverduo' => $this->chartLineDataOverduo,
+            'chartLineDataCompleted' => $this->chartLineDataCompleted,
+        ]);
+    }
+
+    public function getChartData()
+    {
+        $this->getQuantityPending();
+        $this->getQuantityOverdue();
+        $this->getQuantityCompleted();
+        $this->getChartLineLabels();
+        $this->chartLineDataPending = $this->getChartLineData(1);
+        $this->chartLineDataOverduo = $this->getChartLineData(2);
+        $this->chartLineDataCompleted = $this->getChartLineData(3);
+
+        $this->updateChartData();
+        $this->updateChartDataLine();
+    }
 }

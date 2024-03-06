@@ -29,9 +29,9 @@ Route::get('/', function () {
 //     Route::get('/', TaskIndex::class)->name('index');
 // });
 
-Route::group(['prefix' => 'dashboard', 'as' => 'dashboard.'], function(){
-        Route::get('/dashboard', DashboardIndex::class)->name('dashboard.1');
-    });
+// Route::group(['prefix' => 'dashboard', 'as' => 'dashboard.'], function(){
+//         Route::get('/dashboard', DashboardIndex::class)->name('dashboard.1');
+//     });
 
 Route::middleware([
     'auth:sanctum',
