@@ -4,6 +4,7 @@ Este repositório contém um projeto Laravel configurado para uso com Laravel Sa
 
 ## Pré-requisitos
 
+- Composer
 - Docker
 - Docker Compose
 
