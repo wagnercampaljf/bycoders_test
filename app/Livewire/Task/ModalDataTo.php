@@ -5,6 +5,7 @@ namespace App\Livewire\Task;
 use App\Models\Task;
 use Livewire\Component;
 use App\Models\TaskStatus;
+use App\Notifications\TaskChange;
 use Livewire\Attributes\On; 
 
 class ModalDataTo extends Component
@@ -70,6 +71,10 @@ class ModalDataTo extends Component
 
         $this->dispatch('refresh')->to('task.index');
         $this->dispatch('modalClose', '#modal-data-to');
+
+        #broadcast 
+        $user = auth()->user();
+        $user->notify(new TaskChange($user));
     }
 
     private function edit($taskId){

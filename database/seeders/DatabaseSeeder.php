@@ -18,7 +18,7 @@ class DatabaseSeeder extends Seeder
 
         $this->call(TaskStatusSeeder::class);
 
-        \App\Models\Task::factory()->count(20)->create();
+        \App\Models\Task::factory()->count(15)->create();
 
         // \App\Models\User::factory()->create([
         //     'name' => 'Test User',

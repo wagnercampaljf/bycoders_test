@@ -84,6 +84,7 @@ After completing installation and configuration, you can start using your Larave
 - For the trial, a registry of TASKs was created, with a CRUD with filter pair and all CRUD functionalities.
 - A Dahboard was also created to view summarized Task data, as well as a filter for the Dashboard table and graphs.
 - For the login part, Jetstream was used, creating a complete system for login, profile, reset password, etc.
+- Broadcasting made using Laravel Echo and Pusher, to test it is recommended to open two tabs, or two browsers, in one tab leave the Dashboard open to see the changes, and in the other tab open the Tasks register and register a new Task, notice that Broadcasting updates the Dashboard in real time.
 
 ## Main Tools Used
 

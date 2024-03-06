@@ -36,6 +36,24 @@ class Index extends Component
         ]);
     }
 
+    public function getListeners()
+    {
+
+        $authId = Auth()->User()->id;
+
+        return [
+
+            'refresh',
+            "echo-private:users.{$authId},.Illuminate\\Notifications\\Events\\BroadcastNotificationCreated" => 'broadcastedNotifications'
+
+        ];
+    }
+
+    public function broadcastedNotifications($event)
+    {
+        //dd($event);
+    }
+
     public function getQuantityPending(){
         $tasksQuery = Task::query();
         $tasksQuery->when($this->initialDateFilter, function ($q, $initialDateFilter){
